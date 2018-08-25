@@ -1,0 +1,32 @@
+Apache Notes 
+
+Download the Apache Web Server RPM 
+  - sudo yumdownloader httpd 
+
+Query the package 
+  - rpm -qpi httpd-*rpm 
+
+Query the config files 
+  - rpm -qpc httpd-*rpm 
+
+Command Line Options 
+  - nvim /etc/sysconfig/httpd 
+
+Apache Log rotatation 
+  - /etc/logrotate.d/httpd
+
+Apache temporary runtime files (no need to change this file) 
+  - /etc/tmpfiles.d/httpd.conf
+
+Error Messages a user sees if there is an issue
+  - /var/www/error
+
+Ancilliary configurations 
+  - /etc/httpd/conf.d 
+  - any file in this directory that ends with '.conf' will be pulled into the main 'httpd.conf' file and used to configure Apache
+  - new modules usually store their configs in this directory :: mod_ssl (secure web servers) and mod_python (interprets python code)
+    ssl.conf :: python.conf, respectively 
+
+## Install ## 
+RHEL -> yum groupinstall "Web Server" or yum install httpd 
+
