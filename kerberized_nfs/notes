@@ -30,3 +30,8 @@ mount.nfs: an incorrect mount option was specified
 -1 EINVAL (Invalid argument) 
 
 ( echo rkt /root/nfs-server.keytab; echo wkt /etc/krb5.keytab ) | ktutil
+
+so turns out: /etc/sysconfig/nfs -needs secure_nfs=true or some shit like this.. smdh
+ipa-client-automount
+
+34.2.1. Configuring NFS Automatically | RHEL7 (the ipa manual)
