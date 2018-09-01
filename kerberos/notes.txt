@@ -1,0 +1,76 @@
+Kerberos 
+: source => kerberos.org
+
+Kerberos Terms 
+
+Key Distribution Center Database (kdc database) 
+  Database of principles and associated keys 
+
+Key Distribution Center server
+  Central server that runs the authentication service and ticket-granting service
+
+Principle 
+  verified client
+
+Realm
+  Administrative area of KDC
+
+Ticket Granting Ticket (TGT)
+  Initial certificate to identify client
+
+Ticket Granting Service (TGS)
+  Service that runs on the KDC to issue tickets 
+
+Kerberos Authentication 
+  client contacts authentication service 
+  authentication service (AS) produces TGT 
+  the tgt is sent to the tgs 
+  the tgs gives back as service ticket 
+  the client presents this service ticket to service host 
+  services hosts decrypts is and grants access
+  passwords are never sent 
+  all data is encrypted 
+
+Kerberos Packages 
+  yum install krb5-server (server)
+
+Configure Kerberos Server 
+  nvim /etc/krb5.conf 
+  uncomment everything
+  Change Realms example.com to <custom realm name> 
+  Change the kdc to proper name
+  vim /var/kerberos/krb5kdc/kdc.conf 
+    change realm to configured Realm 
+  vim /var/kerberos/krb5kdc/kadm5.acl 
+    change Realm
+  Create kerberos db
+    kdb5_util create -s -r REALM.COM 
+      enter passwd
+      master passwd 
+  Enable and start service
+    systemctl enable kadmin
+    systemctl enable krb5kdc
+    and start them both 
+  Create firewall rule to allow kerberos 
+    firewall-cmd --zone=public --permanent --add-service=kerberos 
+    firewall-cmd --reload 
+  Create principals 
+    kadmin.<>
+    addprinc root/admin 
+    addprinc -randkey host/srv1.rhce.lab"
+    addprinc someuser
+    ktadd -k /tmp/srv1.rhce.lab.keytab host/srv1.rhce.lab 
+    listprincs
+    quit 
+
+    scp /tmp/srv1.rhce.lab.keytab /etc/krb5.conf rhce@srv1.rhce.lab 
+
+    Fuhhh all this -> I actually use ipa-server ipa-client 
+
+    on srv 
+    yum install pam_krb5 krb5-workstation
+
+    ktutil
+    rkt (read keytab) /tmp/srv1.rhce.lab.keytab 
+    wkt (write keytab) /etc/krb5.keytab 
+    
