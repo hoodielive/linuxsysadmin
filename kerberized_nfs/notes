@@ -1,0 +1,32 @@
+Points of interest:
+mount.nfs 
+nfs4_try_mount() = -13 [error]
+
+In context:
+messages:Aug 26 20:44:20 localhost kernel: --> nfs4_try_mount()
+messages:Aug 26 20:44:20 localhost kernel: <-- nfs4_try_mount() = -13 [error]
+messages:Aug 26 20:44:21 localhost kernel: NFS: nfs mount opts='sec=krb5p,vers=4,addr=10.0.1.19,clientaddr=10.0.1.14'
+messages:Aug 26 20:44:21 localhost kernel: NFS:   parsing nfs mount option 'sec=krb5p'
+messages:Aug 26 20:44:21 localhost kernel: NFS:   parsing nfs mount option 'vers=4'
+messages:Aug 26 20:44:21 localhost kernel: NFS:   parsing nfs mount option 'addr=10.0.1.19'
+messages:Aug 26 20:44:21 localhost kernel: NFS:   parsing nfs mount option 'clientaddr=10.0.1.14'
+messages:Aug 26 20:44:21 localhost kernel: NFS: MNTPATH: '/nfss'
+messages:Aug 26 20:44:21 localhost kernel: --> nfs4_try_mount()
+messages:Aug 26 20:44:21 localhost kernel: <-- nfs4_try_mount() = -13 [error]
+
+
+ strace -fe mount mount -t nfs srv1.rhce.lab:/nfss /nfssecure 
+ rpcdebug -m nfs -s all
+ rpcdebug -m rpc -s call xprt
+
+[root@srv2 log]# strace -fe mount mount -t nfs -o sec=krb5p srv1.rhce.lab:/nfss /nfssecure
+Process 3414 attached
+[pid  3414] mount("srv1.rhce.lab:/nfss", "/nfssecure", "nfs", 0, "sec=krb5p,vers=4,addr=10.0.1.19,"...) = -1 EINVAL (Invalid argument)
+mount.nfs: an incorrect mount option was specified
+[pid  3414] +++ exited with 32 +++
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=3414, si_status=32, si_utime=0, si_stime=0} ---
++++ exited with 32 +++
+
+-1 EINVAL (Invalid argument) 
+
+( echo rkt /root/nfs-server.keytab; echo wkt /etc/krb5.keytab ) | ktutil
