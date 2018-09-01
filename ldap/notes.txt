@@ -56,3 +56,62 @@ OpenLDAP features v3:
   - Start necessary services 
   - Add entries to the directory 
   - Search the directory 
+
+  OpenLDAP Packages
+  - openldap
+  - openldap-clients
+  - openldap-servers
+  - nss-pam-ldapd 
+  - mod_ldap
+  - compat-openldap
+  - openldap-servers-sql 
+
+  yum install openldap-{clients,servers} oddjob-mkhomedir -y
+
+Command Naming convention between server and client 
+
+- slap (server)
+  -> slapacl - checks access to attributes 
+  -> slapadd - adds entries from LDIF file (root)
+  -> slapauth - checks IDs for authentication perms 
+  -> slapcat - pulls entries and saves in LDIF format 
+  -> slapdn - checks DNs against schema
+  -> slapindex - reindexes the directory 
+  -> slappasswd - creates encryped user password
+  -> slapschema - check compliance of DB with schema
+  -> slaptest - check server configuration 
+
+- ldap (client)
+  -> ldapadd - adds entries to a directory
+  -> ldapcompare - compares attributes with entry
+  -> ldapdelete - deletes entry from directory
+  -> ldapmodify - modifies entries in directory 
+  -> ldapmodrdn - modifies RDN value in directory 
+  -> ldappasswd - sets the password of LDAP user
+  -> ldapsearch - searches LDAP directory entries 
+
+
+  LDIF Formatted File
+
+  dn: olcDatabase={2}hdb,cn=config
+  changetype: modify
+  replace: olcSuffix
+  olcSuffix: dc=allpurpose,dc=rhce,dc=lab
+  
+  dn: olcDatabase={2}hbd,cn=config
+  changetype: modify
+  replace: olcRootDN
+  olcRootDN: cn=ldapadm,dc=allpurpose,dc=rhce,dc=lab
+
+
+# Check firewall, selinux and networking 
+
+ss -lntu | grep 389  or netstat -antup | grep 389
+firewall-cmd --add-service={ldap,ldaps} 
+semanage fcontext -a -t slapd_db_t '/etc/openldap/slapd\.d(/.*)?'
+ausearch -c 'slapd' --raw | audit2allow -M my-slapd
+semodule -i my-slapd.pp
+setsebool -P authlogin_nsswitch_use_ldap=1
+setsebool -P allow_ypbind=1
+
+
