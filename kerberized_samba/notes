@@ -1,0 +1,2 @@
+# kinit user01
+# mount -t cifs -o sec=krb5 //centos7-test1.example.com/public /mnt/user01/
