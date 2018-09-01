@@ -9,7 +9,7 @@ Key Distribution Center Database (kdc database)
 Key Distribution Center server
   Central server that runs the authentication service and ticket-granting service
 
-Principle 
+Principal
   verified client
 
 Realm
