@@ -1,0 +1,58 @@
+LDAP Overview 
+
+- Lightweight Directory Access Protocol 
+- Centralized information store
+- User authentication 
+- Email messaging 
+- Calendar services
+- Platform independent 
+- Microsoft Active Directory
+- Red Hat Directory Services
+
+LDAP Details
+- Client/Server arrangement for storing information 
+- Information stored includes access permissions
+- Communication is encrypted with TLS
+- Supports multiple backend databases 
+
+LDAP Terminology
+- Directory, a specialized db that stores information about objects, such as people, profiles and printers
+- Entry, a single unit in a LDAP directory 
+- Attribute, detail of an entry 
+- Matching rule, search criteria for matching entries 
+- Object class, structure of required and optional attributes for an entry
+- Schema, attributes, object classes, and matching rules packaged
+- LDIF, a plaintext representation of an LDAP entry
+- Distinguished name (DN), unique identifier for entry 
+- Relative distinguished name (RDN), unique identifier for components of an entry 
+
+LDAP Attribute Details
+- Attribute type describes the information 
+- Attribute value is the data it holds
+
+LDAP Common Attribute Types
+- Common name (cn)
+- Domain Component (dc)
+- Country 
+- Mail (mail)
+- Address (streetAddress)
+- Organization (o)
+- Organizational Unit (ou)
+- Surname (sn)
+- Telephone number (telephoneNumber)
+
+OpenLDAP features v3:
+- Supports Simple Authentication and Security Layer (SASL)
+- Support for TLS
+- Support for SSL
+- LDAP over IPC (Interprocess Communication)
+- ipv6 
+- LDIFv1
+- CAPI for program access
+
+- Setting up LDAP server 
+  - Install packages 
+  - Configure LDAP server 
+  - Start necessary services 
+  - Add entries to the directory 
+  - Search the directory 
