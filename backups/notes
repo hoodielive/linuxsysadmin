@@ -1,0 +1,5 @@
+Any backup solution should - roughly - provide the following: 
+- full and incremental backups 
+- file permissions and ownership perservation 
+- the ability to be automated 
+
