@@ -36,3 +36,25 @@ In this part of the window, users can make changes to the settings.
 
 At the bottom of the window, users will see various information about the selected setting.
 
+Here is a list and description of each of the different major categories/schemas.
+
+apps - settings for specific applications are found under here
+
+ca - settings pertaining to Dconf itself
+
+com - settings specific/common to the current system go here
+
+desktop - settings for the desktop system (like Gnome, iBus, etc.) are found here
+
+org - settings belonging to apps or subsystems of various organizations or groups go here. For instance, many applications are developed by the Gnome developers and Freedesktop developers so they each have a category dedicated to all of their software.
+
+system - system settings belong under this schema
+
+The user can make many changes using Dconf-editor. For example, at "com.canonical.indicator-session" the user can enable or disable the "Restart" or "Suspend" entries in the menu commonly used to shutdown Ubuntu. Also, under "com.canonical.unity-greeter" users can customize the Greeter screen (lock or login screen) like the background wallpaper, start-up sound, etc.
+
+Some Linux systems may have some sub-categories that other systems lack. This all depends on the installed software and their versions.
+
+Now that we have a decent understanding of Dconf, we can learn about the various settings that can be configured.
+
+To edit the list of media players show under the sound menu, go to "com.canonical.indicator.sound" in Dconf-editor. Look for the key titled "interested-media-players". For the value, list the names of the "*.desktop" files used by the media players that the user wants to add.
+
