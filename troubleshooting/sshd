@@ -1,0 +1,16 @@
+Define: 
+
+User can't log in [permission denied]
+
+Gather information:
+
+systemctl status sshd 
+tail /var/log/secure 
+look for password related errors 
+getent passwd user => do you see /bin/false or nologin syntax ? 
+
+Hypotheses will be formed from info-gathering session and testing thereby 
+
+Solve issue:
+If it is a password issue, have user to change password
+If it is an login issue where the user is denied login /bin/false, then grant access, etc., 
