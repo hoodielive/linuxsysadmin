@@ -1,0 +1,40 @@
+- Nagios
+- Zabbix 
+- Performance Co Pilot
+- Cockpit (Red Hat)
+- Landscape (Ubuntu)
+
+
+Use Cockpit
+yum install cockpit cockpit-system cockpit-storaged cockpit-pcp 
+systemctl enable --now cockpit.socket [by default it doesn't come with a service, just a socket]
+  - meaning, it will only listen on a port 
+  - but get this:
+    - firewall-cmd --add-service=cockpit --permanent 
+    - firewall-cmd --reload 
+    - default port is 9090 
+
+PCP (performance co pilot)
+  - yum install pcp pcp-system-tools 
+  - systemctl enable --now pmcd 
+  - systemctl status pmcd
+  - pmstat
+  - pmatop
+  - install pmlogger [ systemctl status pmlogger ]
+  - cd /var/log/pcp/pmlogger && ls 
+    cd ts.rhce.lab 
+    du -hs .
+  - pminfo 
+  - pminfo | wc 
+  - pmval -s 5 proc.nprocs (look at the number of procs)
+    get info on specific values | track pcp metric and monitor 
+  - pmval -T lminute kernel.percpu.cpu.idle 
+    shows idle statistics 
+  - pmval -a /var/log/pcp/pmlogger/ts.rhce.lab/20180424.18.44.0 kernel.all.load  -S  '@Tue Sep 03 18:45 5:00' -T 
+  - yum search pcp (rich documentation but I'm tired of reading it - extremely terse)
+    yum install pcp-doc
+  - man pcpintro
+
+Understanding Logging: 
+
+
