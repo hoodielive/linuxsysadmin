@@ -5,3 +5,33 @@ Troubleshooting Methodology
 - form a hypothesis 
 - test the hypothesis 
 - fix the problem
+
+
+Defining Issues: 
+For example: 
+
+If you cannot connect to a ftp server, you don't say something is wrong with the ftp server, rather you should
+say, I cannot connect to an ftp server, from my machine. 
+
+- Provide details because the issue by itself doesn't say anything. 
+  - it may be a symptom of another problem 
+
+
+Gathering information:
+Look at the log files:
+  - journalctl 
+  - systemctl status -l 
+
+- Don't go to far in getting information lol 
+
+Form a Hypothesis:
+- may mean nothing, but you'll know when you test your hypothesis 
+
+Test the hypothesis:
+- Validation 
+
+Fix the problem:
+- If problem is not fixed, then you'll start this process over because this means that your hypothesis is wrong! 
+- Builds experiences (be thankful for errors)
+
+
