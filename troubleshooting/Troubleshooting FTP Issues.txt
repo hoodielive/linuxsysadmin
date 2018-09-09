@@ -1,0 +1,62 @@
+Lab:
+Symptom -> Anonymous users can download files but cannot upload files 
+
+Install:
+  -> lftp 
+
+$ lftp 
+  lftp localhost:~> ls
+   `ls' at 0 [Delaying before reconnect: 44]
+
+Define (Getter):
+  Is the server running? 
+   - systemctl status vsftpd 
+  
+  now 
+  lftp> 
+   put file
+   put: Access failed: 553 Could not create file. (file)
+
+   Anonymous user can't upload files [defined]
+
+   vim /etc/vsftpd/vsftpd.conf 
+
+   anonymous_enable ?
+   anon_upload_enable ?
+   anon_mkdir_write_enable ? 
+   grep ftp /etc/passwd 
+   getent passwd ftp (this will also show the document root which by default is /var/ftp)
+   cd /var/ftp: is there a pub directory? What are the perms? 
+   mkdir uploads && chmod 0777 uploads 
+   systemctl restart vsftpd
+
+   lftp
+   cd uploads 
+   put /etc/hosts 
+   Permission still denied ? 
+   Is it a connectivity issue? No, it's localhost; if networked then test through adjacent servers; what is the 
+    fqdn? firewall? selinux? 
+
+  Selinux? 
+
+  getenforce? 
+
+  setenforce? permissive and test! 
+  
+  getsebool -a | grep ftp 
+
+  setsebool -P is there are booleans that need to be set
+
+  grep sealert /var/log/messages 
+    - is there an alert indicating SELinux is preventing vsftpd from append access on file /uploads/hosts ? 
+    - read those alerts solutions (but sometimes they are stupid or don't make sense)
+    set selinux fcontext to public_content_rw_t
+
+    semanage fcontext -a -t public_content_rw_t "/var/log/uploads(/.*)?"
+    /sbin/restorecon -Rv /var/log/uploads 
+
+    Make sure booleans are set as well! 
+
+  setenforce back to Enforcing 
+    setenforce 1
+
