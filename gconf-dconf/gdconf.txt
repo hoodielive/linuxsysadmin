@@ -1,0 +1,38 @@
+Dconf is a settings database used in Gnome3 and similar systems (such as Unity and XFCE). 
+
+Dconf is the predecessor to Gconf which was used in Gnome2. 
+
+Dconf acts like the registry used on Windows systems. 
+
+Understanding this system may help users figure out how to make various changes and fixes to their system.
+
+Dconf provides a Windows-registry-like interface. ~/.config/dconf/user is the binary database used by Dconf.
+
+GSettings is a binary interface to the same data seen in Dconf. 
+
+The "gsettings" command-line utility provides a way to modify data in the Dconf database. 
+
+In a terminal, executing “gsettings list-schemas” will print a list of schemas while “gsettings list-keys SCHEMA.SUB” 
+
+will print the keys within a schema. 
+
+To set/change a key's value, type “gsettings set SCHEMA KEY VALUE”.
+
+Gconf is the now obsolete and was used in Gnome2. 
+
+It used an XML database. 
+
+Even though this system is old, some programs still use it (as seen by the ~/.gconf/ directory).
+
+Dconf-editor is a GUI program used to make various edits/changes to the Dconf database. 
+
+On the left side of the window are various categories such as apps, ca, com, desktop, org, and system. 
+
+Each one stores many sub-categories. 
+
+The right side of the window displays the settings for the selected category or sub-category. 
+
+In this part of the window, users can make changes to the settings. 
+
+At the bottom of the window, users will see various information about the selected setting.
+

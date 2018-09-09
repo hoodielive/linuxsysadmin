@@ -1,0 +1,10 @@
+# Rsync
+
+- rsync is a native Linux tool that can be deployed from the official repositories 
+- it supports incremental and full backups 
+- it transfers files over SSH
+- it can be automated via cron jobs to run in unattended mode 
+
+# something to play with:
+git clone https://github.com/banago/simple-php-website.git
+
