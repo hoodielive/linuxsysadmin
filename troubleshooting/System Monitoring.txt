@@ -37,4 +37,40 @@ PCP (performance co pilot)
 
 Understanding Logging: 
 
+rsyslog: 
+- facility 
+- priority
+- destination 
 
+Which facility will it look at?
+Which priority will it consider? 
+Where is it logged at in /var/log? 
+
+- does not log everything, only what the admin permits 
+- supports remote logging: configure a logging server 
+
+systemd-journald:
+- logs everything that is managed by systemd 
+- runtime only (in-memory)
+- can be integrated with rsyslog (and will apply its filtering mechanism)
+
+
+Lab: 
+Configure a remote logging server 
+Make the server listen 
+
+/var/log/rsyslog.conf :: uncomment udp 
+on client uncomment @@remote-host:514 (but *.* logs everything so make sure you know what you're getting into)
+@@ means udp 
+ - ss -tuna 
+ port 515 
+ firewall-cmd --add-port=515/tcp --permanent 
+
+ logger "Hello, from the ts server"
+
+
+ Monitoring Changes 
+
+ - AIDE (Advanced Intrusions Detection Environment)
+ - RPM Queries 
+ - Auditing 
