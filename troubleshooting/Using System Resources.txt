@@ -29,10 +29,16 @@ journalctl class:
 
   How do you make your journals persistent
   vim /etc/systemd/journald.conf 
-    uncomment Storage=auto
+    #Storage=auto
     mkdir /var/log/journal
     chown root:systemd-journal /var/log/journal 
     chmod 2755 /var/log/journal 
     killall -USR1 systemd-journald
+    reboot 
+    cd /var/log/journal && ls 
+
+Lab:
+  The systemd journal should be persistent. However, after a reboot you notice that is not. Fix it!
+
 
 
