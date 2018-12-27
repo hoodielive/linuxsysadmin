@@ -1,0 +1,65 @@
+#+TITLE: Linux Systems Programming 
+
+* Foundation
+** Kernel/User Space
+** System Calls and Error Handling 
+** Systems Programming Example in C and Python
+
+* Accessing Files
+** Low Level I/O
+** Demo File Copy
+** Random Access 
+** Buffered and Formatted I/O
+** Demo File Copy
+** Pythonic Files 
+** ScatterGather I/O and mmap 
+** Summary 
+
+* Managing Files and Directories
+** File System Structure
+** The stat System Call and stat Structure
+** Demo Examining File Attributes
+** Examining File Types and Permissions 
+** Managing Links and Symbolic Links 
+** Directory Traversal 
+** Doing it in Python 
+** The inotify API 
+** inotify Code Walkthrough and Demo
+** Summary 
+*  The Command Line, the Environment and Time 
+** Accessing Command Line Argument 
+** Processing Command Options 
+** The Environment
+** Time
+** Time Zones and Locales 
+** Process Time 
+** Summary 
+
+*  Processes and Pipes 
+** Process Concepts 
+** Creating Processes with Fork 
+** Executing a Program the exec Family 
+** The Lifecycle of a Process 
+** Anonymous Pipes 
+** Demonstration Pipes and Shell 
+** Named Pipes 
+** Summary
+
+* Controlling Access, Identity and Permissions 
+** Querying and Listing User Accounts 
+** Real vs Effective Process Identity 
+** File Permissions 
+** File Ownership 
+** Summary 
+
+*  Mastering Signals 
+** Signal Types, Origins and Uses 
+** Process Termination and Exit Status 
+** Establishing a Signal Handler with Signal 
+** Better Signal Handling with Sigaction 
+** Suggestions 1 and 2 Ignore or Terminate Gracefully 
+** Suggestions 3 Reconfigure on the Fly 
+** Suggestions 4 and 5 Report Status Dynamically 
+** Suggestions 6 Implement a Timeout
+** Suggestions 7 Schedule Periodic Actions 
+** Summary 
