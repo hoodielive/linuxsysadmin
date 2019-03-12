@@ -1,0 +1,7 @@
+The null client will forward mail to the relay server. 
+
+This will aid in having a central server for log management. 
+
+It also serves as a compensatory control for interfacing with the internet. 
+ 
+For the sake of studies, lets use postfix as our mail transfer agent (mta).
