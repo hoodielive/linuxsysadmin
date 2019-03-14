@@ -30,3 +30,18 @@ Ancilliary configurations
 ## Install ## 
 RHEL -> yum groupinstall "Web Server" or yum install httpd 
 
+
+- Why is it that when vhosts are active, the private directory configuration doesn't work? I have disabled vhosts and put the 
+<Directory /var/www/html/private> 
+  AuthType Basic 
+  AuthName "This is a private directory."
+  AuthUserFile /etc/httpd/conf/htpass
+  Require valid-user 
+</Directory> 
+
+configuration into the httpd.conf file and then it works. 
+
+*(vhost1 is listening on 8888)
+*(vhost2 is listening on 80)
+
+What then is the problem? 
