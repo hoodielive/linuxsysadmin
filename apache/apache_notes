@@ -44,4 +44,4 @@ configuration into the httpd.conf file and then it works.
 *(vhost1 is listening on 8888)
 *(vhost2 is listening on 80)
 
-What then is the problem? 
+What then is the problem? # still can't figure this out.. 
