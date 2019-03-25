@@ -1,0 +1,8 @@
+Error: mount.nfs4: operation not permitted
+
+- check that ntpd is synced 
+
+Error: permission denied 
+- check nfs-secure-server is enabled and started (assume nothing) 
+
+- Study every part of NFS.
