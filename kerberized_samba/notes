@@ -23,3 +23,22 @@ The [global] section defines the basic configuration of the Samba server.
 		IPv6 network/prefix: [2001:db8:0:1::/64] 
 		Host name: srv1.rhce.lab
 		- All hosts ending in rhce.lab: .rhce.lab 
+			- to restrict access to only the hosts from the 10.0.2.0/24 network:
+			using the trailing dot notation, the hosts allow etnry in the /etc/samba/smb.conf
+			configuration file would read:
+				hosts allow - 10.0.
+		- To additionally allow access from all host names ending with ".rhce.lab", the '/etc/samba/smb.conf'
+		  configuration file entry would be:
+		                hosts allow - 10.0. .rhce.lab
+
+
+[share_name]
+path = determines what directory to share. For example:
+	path = /sharedpath 
+writable = determines should authenticated users have rw access to the share; the default is no. 
+	writable = yes 
+	if writable = no is set, a comma separated write list of users with rw to the share 'can' be provided.
+	Users not on the list will have read-only access.
+	Members of local groups can also be specified:
+		- write list = @devops will permit all authenticated users who are members of the Linux group 
+		"devops" to have write access. 
