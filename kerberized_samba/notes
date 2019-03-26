@@ -42,3 +42,15 @@ writable = determines should authenticated users have rw access to the share; th
 	Members of local groups can also be specified:
 		- write list = @devops will permit all authenticated users who are members of the Linux group 
 		"devops" to have write access. 
+valid users = if set, specifies a list of users allowed to access the share. Users not on the list are 'not' allowed
+	     to access the share. If blank, 'all' users can access the share. 
+
+For example, to allow only user osameji and members of the devops group read-only access to the share myshare, it would
+read:
+[myshare]
+	path = /sharedpath
+	writable = no
+	valid users = osameji, @devops
+
+[home] defines a special file share, which is enabled by default. 
+It makes local home directories available via SMB. 
