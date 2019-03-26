@@ -6,3 +6,18 @@ Error: permission denied
 - check nfs-secure-server is enabled and started (assume nothing) 
 
 - Study every part of NFS.
+
+# Resolution (finally solved this thing) 
+mount.nfs4 and mount.nfs are symlinked 
+- make sure nfs-secure is running on client and nfs-secure-server is running on server
+- make sure krb5.conf file is populated with the the kerberos realm and kdc server information - because authconfig 
+  does 'NOT' populate these fields. 
+- the proper syntax for mounting from client is:
+	mount.nfs -o sec=krb5p srv1:/nfssecure /srv/secure -vvv
+- For verbose logging on the server side:
+	- set rpcsvcgssd to '-vvv' in the '/etc/sysconfig/nfs' file. 
+- For verbose logging on the client side:
+	- set rpcgssd to '-vvv' in the '/etc/sysconfig/nfs' file. 
+- Parse logs with journalctl:
+	- journalctl -xe and/or -u nfs-secure (client) or nfs-secure-server (server) 
+
