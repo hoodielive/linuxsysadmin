@@ -1,2 +1,25 @@
 # kinit user01
 # mount -t cifs -o sec=krb5 //centos7-test1.example.com/public /mnt/user01/
+
+The [global] section defines the basic configuration of the Samba server. 
+- 3 things should be configured here: 
+	1. workgroup -> used to specify the Windows workgroup for the server. 
+	2. security -> controls 'how' clients are authenticated by Samba
+		security = user [clients log in with a valid username/password managed by the 'local' Samba server]
+		* this setting is the default in /etc/samba/smb.conf. 
+	3. hosts allow is a comma-, space-, or tab-delimited list of hosts that are permitted to access the Samba service.
+		* if not specified, all hosts can access Samba.
+		* if it is not specified in the [global] section, it can be set on each share separately.
+		* if it specified in the [global] section, then it will apply to all shares, regardless of whether each share 
+		  has a different setting. 
+		
+		Hosts can be specified by host name or by source IP address. 
+		Host names are checked by reverse-resolving the IP address of the incoming connection attempt. 
+			*see -> hosts_access(5)
+		- Allowed hosts can be specified in a number of ways:
+		IPv4 network/prefix: 10.0.2.0/24
+		IPv4 network/netmask: 10.0.2.0/255.255.255.0
+		If the IPv4 subnet prefix is on a byte boundary: 10.0.2.
+		IPv6 network/prefix: [2001:db8:0:1::/64] 
+		Host name: srv1.rhce.lab
+		- All hosts ending in rhce.lab: .rhce.lab 
