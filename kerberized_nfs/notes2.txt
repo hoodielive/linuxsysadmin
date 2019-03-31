@@ -1,5 +1,4 @@
 Error: mount.nfs4: operation not permitted
-
 - check that ntpd is synced 
 server idm.rhce.lab 
 peer srv1.rhce.lab
@@ -22,6 +21,4 @@ mount.nfs4 and mount.nfs are symlinked
 	- set rpcgssd to '-vvv' in the '/etc/sysconfig/nfs' file. 
 - Parse logs with journalctl:
 	- journalctl -xe and/or -u nfs-secure (client) or nfs-secure-server (server) 
-
-
 Another thing - jus mount this thing as nfs version 3 in the /etc/fstab as it apparently chokes on nfs4 configuration.
