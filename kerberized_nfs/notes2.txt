@@ -22,3 +22,6 @@ mount.nfs4 and mount.nfs are symlinked
 - Parse logs with journalctl:
 	- journalctl -xe and/or -u nfs-secure (client) or nfs-secure-server (server) 
 Another thing - jus mount this thing as nfs version 3 in the /etc/fstab as it apparently chokes on nfs4 configuration.
+
+
+- Restart the server and nfs will work.. sigh
