@@ -1,0 +1,24 @@
+Setup 
+
+Server: 
+	1. Install packages:
+		yum install mariadb mariadb-server 
+	2. Enable and start service 
+		systemctl enable mariadb 
+		systemctl start mariadb 
+	3. If you will allow remote connections then open firewall
+		firewall-cmd --add-service=mysql --permanent 
+		firewall-cmd --reload 
+	4. Open my.cnf 
+		bind-address = 10.0.2.30 (server ip) 
+	5. Make server secure 
+		mysql_secure_installation 
+		establish root creds 
+		remove tests, disallow root login, flush privileges
+
+Client 
+	1. yum install mariadb mariadb-client 
+	2. Enable and start service 
+		systemctl enable mariadb 
+		systemctl start mariadb 
+	3. mysql_secure_installation

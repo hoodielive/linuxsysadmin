@@ -35,3 +35,5 @@ so turns out: /etc/sysconfig/nfs -needs secure_nfs=true or some shit like this..
 ipa-client-automount
 
 34.2.1. Configuring NFS Automatically | RHEL7 (the ipa manual)
+
+This is ridiculous!!!
