@@ -1,2 +1,40 @@
 # kinit user01
 # mount -t cifs -o sec=krb5 //centos7-test1.example.com/public /mnt/user01/
+#
+#
+
+Server 
+yum install samba 
+systemctl start smb nmb 
+firewall-cmd --permanent --add-service=samba
+firewall-cmd --reload 
+
+mkdir /smb /smbmulti
+chmod 777 /smb /smbmulti
+? boolean
+semanage fcontext -a -t samba_share_t "/smb(/.*)?"
+semanage fcontext -a -t samba_share_t "/smbmulti(/.*)?"
+restorecon -R -v /smb
+restorecon -R -v /smbmulti
+smbpasswd -a smbuser1 
+
+vim /etc/samba/smb.conf 
+workgroup = APOKUEON
+hosts allow  = limits which network connects to your share (globally or locally)
+
+go down to public and use it as a means to configure your share 
+[smb]
+comment = normal samba share 
+path = /smb
+writeable = no 
+write list = smbuser1
+
+restart samba services:
+systemctl restart smb nmb 
+testparm 
+
+client
+yum install cifs-utils
+mkdir /srv/smb 
+mount -t cifs //srv1.rhce.lab/smb /smb -o user=smbuser1 
+mount | grep cifs
