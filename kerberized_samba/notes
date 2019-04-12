@@ -95,3 +95,11 @@ read:
 [home] defines a special file share, which is enabled by default. 
 It makes local home directories available via SMB. 
 >>>>>>> 2d6729c15e8eb0794fcfcbf75598a30e73572cca
+
+
+Dilemma
+So it seems that I have no qualms with mounting the shares, however, when I try to write to the shares 
+there is a permission denied error. This doesn't happen with "smbclient //srv1.rhce.lab/data" -U osa. 
+I can write like that, but when I mount to the fs, then there is a permission denied. 
+
+
