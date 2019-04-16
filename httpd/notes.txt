@@ -1,0 +1,8 @@
+Troubleshooting HTTPD VHOSTS 
+
+- So it turns out that the first vhost becomes the default for the apache server 
+
+srv1.rhce.lab - default
+vhost1.rhce.lab  - will serve default 
+vhost2.rhce.lab - will resolve to whatever directory has the content for vhost2
+vhost3.rhce.lab - same as vhost2
