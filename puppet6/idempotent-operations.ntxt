@@ -1,0 +1,14 @@
+# idempotent = idem (same) + potent (power) = same power 
+
+any number^1 = idempotent, A number to the power of 1 is the same
+value = value * 2 = non-idempotent, will double every time
+value = value * 2 / 2 = idempotent, reamins the same value 
+echo "Good!" >> /some/file = non-idempotent, file will keep growing
+echo "Good!" > /some/file = idempotent, file will always have the 'same' content
+
+# Declaring Final State 
+- For a configuration state to be acheived no matter the 'conditions', the configuration language must 'avoid' describing the
+  actions required to reach the desired state.
+- The configuration language should 'describe' the desired 'state' itself, and leave the actions up to the interpreter (declare). 
+
+
