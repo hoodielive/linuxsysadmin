@@ -1,0 +1,5 @@
+Several issues remain relative to kerberized_nfs. I have successfully mounted it, however, I am denied access when writing to the share. 
+
+My resolve is to investigate the kerberos configuration and revisit this when I have discovered something concrete. 
+
+
