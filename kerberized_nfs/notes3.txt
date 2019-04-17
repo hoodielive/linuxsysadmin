@@ -24,4 +24,4 @@ Queries from the Client Perspective:
 
 Also, it's not really clear to me what the issue actually is. What is that you're trying to accomplish, which part works and which does not?
 
-
+Red Hat Documentation: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/identity_management_guide/kerb-nfs 
