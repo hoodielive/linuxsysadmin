@@ -2,4 +2,14 @@ Several issues remain relative to kerberized_nfs. I have successfully mounted it
 
 My resolve is to investigate the kerberos configuration and revisit this when I have discovered something concrete. 
 
+Queries from the Client Perspective:  
+1. Are users resolvable using the id command?
+2. Can you kinit a user from the client? 
+3. Can you log into this system?
+4. In 7 the credential cache created by SSSD is in kernel keyring but it seems that NFS client is looking for it in /tmp
+5. What is the sequence of operations? 
+6. What do you actually do before you observe this error (for example: reboot, log into the system using sssd...)?
+
+Also, it's not really clear to me what the issue actually is. What is that you're trying to accomplish, which part works and which does not?
+
 
