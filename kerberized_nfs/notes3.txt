@@ -1,5 +1,17 @@
 Several issues remain relative to kerberized_nfs. I have successfully mounted it, however, I am denied access when writing to the share. 
-
+ERROR: 
+Apr 16 23:27:52 srv2 rpc.gssd[2935]: doing error downcall
+Apr 16 23:27:53 srv2 rpc.gssd[953]: handling gssd upcall (/var/lib/nfs/rpc_pipefs/nfs/clnt5)
+Apr 16 23:27:53 srv2 rpc.gssd[953]: handle_gssd_upcall: 'mech=krb5 uid=494200001 enctypes=18,17,16,23,3,1,2 '
+Apr 16 23:27:53 srv2 rpc.gssd[2937]: handling krb5 upcall (/var/lib/nfs/rpc_pipefs/nfs/clnt5)
+Apr 16 23:27:53 srv2 rpc.gssd[2937]: process_krb5_upcall: service is '<null>'
+Apr 16 23:27:53 srv2 rpc.gssd[2937]: ERROR: GSS-API: error in gss_acquire_cred(): GSS_S_FAILURE (Unspecified GSS failure.  Minor code may provide more information) - No Kerberos credentials available
+Apr 16 23:27:53 srv2 rpc.gssd[2937]: getting credentials for client with uid 494200001 for server srv1.rhce.lab
+Apr 16 23:27:53 srv2 rpc.gssd[2937]: CC '/tmp/krb5ccmachine_RHCE.LAB' being considered, with preferred realm 'RHCE.LAB'
+Apr 16 23:27:53 srv2 rpc.gssd[2937]: CC '/tmp/krb5ccmachine_RHCE.LAB' owned by 0, not 494200001
+Apr 16 23:27:53 srv2 rpc.gssd[2937]: getting credentials for client with uid 494200001 for server srv1.rhce.lab
+Apr 16 23:27:53 srv2 rpc.gssd[2937]: Error doing scandir on directory '/run/user/494200001': No such file or directory
+Apr 16 23:27:53 srv2 rpc.gssd[2937]: WARNING: Failed to create krb5 context for user with uid 494200001 for server srv1.rhce.la
 My resolve is to investigate the kerberos configuration and revisit this when I have discovered something concrete. 
 
 Queries from the Client Perspective:  
