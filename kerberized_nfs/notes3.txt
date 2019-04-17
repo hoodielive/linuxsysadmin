@@ -25,3 +25,17 @@ Queries from the Client Perspective:
 Also, it's not really clear to me what the issue actually is. What is that you're trying to accomplish, which part works and which does not?
 
 Red Hat Documentation: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/identity_management_guide/kerb-nfs 
+
+# Professor James 
+Professor gave me some very good information today: 
+The nfsd, nfsiod, lockd, rpciod, rpc.idmapd, rpc.statd, and rpc.mountd daemons provide support for the Network File System (NFS). Note that the first four are kernel daemons, while the last three are user-level daemons.
+
+packages/plugins of interest: 
+- libnfsidmap
+- libsss_idmap
+
+Documentation: 
+/usr/share/man/man5/idmapd.conf.5.gz
+
+conf file: 
+/etc/idmapd.conf
