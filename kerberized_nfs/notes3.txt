@@ -39,3 +39,15 @@ Documentation:
 
 conf file: 
 /etc/idmapd.conf
+
+2010:
+1. The folder that i was trying to access on the SERVER has permission 700.
+2. It doesn't match the uid on the SERVER with the uid on the CLIENT.
+The folder I was trying to access on the SERVER are all owned by uid 1000, with permission 700. 
+But after setting the permission to 777, and doing a sucessful mounted folder is owned by nobody:nogroup
+
+Is it because of these 2 lines in /etc/default/nfs-common 
+NEED_IDMAPD=yes
+NEED_GSSD=no
+
+is rpc.idmapd started?
