@@ -51,3 +51,26 @@ NEED_IDMAPD=yes
 NEED_GSSD=no
 
 is rpc.idmapd started?
+
+
+# Turn on rpcdebugging 
+Discover available modules: rpcdebug -vh
+
+-m module 
+-s set available kernel debug flag for module
+-c clear kernel debug flags 
+
+1. Enable all NFS (client-side) debugging:
+	rpcdebug -m nfs -s all
+2. Enable NFSD (server-side) lockd debugging:
+	rpcdebug -m nfsd -s lockd
+3. Enable RPC call debugging
+	rpcdebug -m rpc -s call 
+
+Disable debugging 
+	rpcdebug -m nfs -c all 
+	rpcdebug -m nfsd -c all
+
+id osa | grep -E '(osa|osameji)'
+getent -s sss group devops 
+
