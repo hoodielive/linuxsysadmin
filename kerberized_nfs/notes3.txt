@@ -74,3 +74,8 @@ Disable debugging
 id osa | grep -E '(osa|osameji)'
 getent -s sss group devops 
 
+Add principals to keytabs
+https://web.mit.edu/Kerberos/krb5-1.5/krb5-1.5.4/doc/krb5-admin/Adding-Principals-to-Keytabs.html#Adding-Principals-to-Keytabs
+
+Remove keytab entries
+https://web.mit.edu/Kerberos/krb5-1.5/krb5-1.5.4/doc/krb5-admin/Removing-Principals-from-Keytabs.html
