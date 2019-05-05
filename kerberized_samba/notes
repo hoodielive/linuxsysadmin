@@ -102,4 +102,5 @@ So it seems that I have no qualms with mounting the shares, however, when I try 
 there is a permission denied error. This doesn't happen with "smbclient //srv1.rhce.lab/data" -U osa. 
 I can write like that, but when I mount to the fs, then there is a permission denied. 
 
+- bruh have you added the users via smbpasswd -a and enabled them via -e ? 
 
