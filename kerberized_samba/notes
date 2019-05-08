@@ -103,4 +103,9 @@ there is a permission denied error. This doesn't happen with "smbclient //srv1.r
 I can write like that, but when I mount to the fs, then there is a permission denied. 
 
 - bruh have you added the users via smbpasswd -a and enabled them via -e ? 
+Make sure that you have: 
+1. Set the proper selinux contexts 
+2. Created a user to map access between node 1 and 2 
+3. Configured access properly 
+4. Don't leave off 'multiuser' in /etc/fstab configuration
 
