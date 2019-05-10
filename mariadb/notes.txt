@@ -22,3 +22,5 @@ Client
 		systemctl enable mariadb 
 		systemctl start mariadb 
 	3. mysql_secure_installation
+
+  skip_network = 10.0.2.0/24 ?
