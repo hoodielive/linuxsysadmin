@@ -1,8 +1,32 @@
 Troubleshooting HTTPD VHOSTS 
 
 - So it turns out that the first vhost becomes the default for the apache server 
+A way to ensure that things are processed in an orderly fashion ( at least for me ) is to do 
+  00-default.conf
+  01-vhost.conf 
+  02-vhost2.conf
+  03-etc.conf 
 
 srv1.rhce.lab - default
 vhost1.rhce.lab  - will serve default 
 vhost2.rhce.lab - will resolve to whatever directory has the content for vhost2
 vhost3.rhce.lab - same as vhost2
+
+SSL 
+curl --insecure -v https://srv1.rhce.lab 2>&1 | awk 'BEGIN { cert=0 } /^\* Server certificate:/ { cert=1 } /^\*/ { if (cert) print }'
+
+Override DNS 
+
+For example, to override DNS and connect to www.example.com with ssl using a particular ip address: 
+(This will also override ipv6)
+curl --resolve www.example.com:443:192.168.42.2 https://www.example.com/
+
+Another example, to connect to a particular backend server named backend1 on port 8080
+curl --connect-to www.example.com:80:backend1.example.com:8080 http://www.example.com/
+
+Remember to add the host header if the server needs that to answer correctly:
+-H 'Host:www.example.com' 
+
+curl --proto-default https <target>
+curl_setopt($curl->curl, CURLOPT_SSL_VERIFYPEER, false);
+
