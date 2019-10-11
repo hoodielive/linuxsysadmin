@@ -1,0 +1,13 @@
+# perform yum update
+- name: perform yum update
+  hosts: kubecluster
+  remote_user: rhce
+  become: true
+  become_method: sudo
+  become_user: root
+
+  tasks:
+    - name: Perform yum update of all packages
+      yum:
+        name: "*"
+        state: latest
