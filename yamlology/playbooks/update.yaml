@@ -45,3 +45,26 @@ comments: >
 # Structure { multiple directives/documents in one file }
 # Optional YAML spec may be requirement for different platforms like: Puppet, Ansible, etc., 
 # --- (triple dashes) to mark start of file and ... (triple dots) to mark end of file. 
+
+
+# Tags { used for setting custom URI, set local tags, set a data type }.
+# URI { use the %TAG !prefix }.
+# %TAG ! tag:hostsdata:phl: (metadata)
+# --- 
+
+# Anchors 
+# Store and reuse data. 
+# Defined with &
+# Reference anchor data with (*)
+---
+host: phl-42
+datacenter: 
+  location: &PHL Philadelphia 
+... 
+--- 
+roles: &wphost 
+  - webserver 
+  - wp_database
+
+--- 
+roles: *wphost
