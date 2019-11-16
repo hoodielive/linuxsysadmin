@@ -1,0 +1,27 @@
+--- 
+# mappings::associative arrays, hash tables, key-value pairs, collections Denoted with (: )
+# No duplicate keys.
+# Mappings can be nested.
+
+# Block Style. 
+host: 10.0.1.25 
+datacenter:
+  location: Pittsburgh 
+  cab: 13
+  cab_unit: 3
+
+# Flow Style.
+  datacenter: { location: pittsburgh, cab: 13, cab_unit: 3  }
+
+# Sequences { lists and arrays } = collections. 
+
+  # Block style.
+  roles: 
+    - webserver 
+    - wp_database
+    - playbooks:
+        - wordpress 
+        - mysql 
+
+  # Flow Style. 
+  roles: [ webserver, wp_database ]
