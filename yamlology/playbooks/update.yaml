@@ -16,12 +16,12 @@ datacenter:
 # Sequences { lists and arrays } = collections. 
 
   # Block style.
-  roles: 
-    - webserver 
-    - wp_database
-    - playbooks:
-        - wordpress 
-        - mysql 
+roles: 
+  - webserver 
+  - wp_database
+  - playbooks:
+     - wordpress 
+      - mysql 
 
   # Flow Style. 
-  roles: [ webserver, wp_database ]
+roles2: [ webserver, wp_database ]
