@@ -25,3 +25,23 @@ roles:
 
   # Flow Style. 
 roles2: [ webserver, wp_database ]
+
+# Scalars:: string, number or boolean 
+# Whitespace permitted 
+# Use quotes (single or double) to convert non-string scalar to string scalar 
+# Double quotes permit escape sequences. 
+# Multiline scalars: Block style perserve new lines. 
+downtime_sch: |
+  2019-11-15 - kernel upgrade 
+  2019-02-02 - security patch 
+
+# Folded style (converts newlines/space to single space).
+comments: > 
+  Experiencing high I/O
+  since 2019-11-05. 
+  Currently investigating. 
+
+... 
+# Structure { multiple directives/documents in one file }
+# Optional YAML spec may be requirement for different platforms like: Puppet, Ansible, etc., 
+# --- (triple dashes) to mark start of file and ... (triple dots) to mark end of file. 
