@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+ipa-server-install \
+--realm=RHCE.LAB \
+--domain=rhce.lab \
+--ds-password=Pr@phecy1 \
+--admin-password=pr@phet1 \
+--hostname=ipaserver.rhce.lab \
+--idstart=60000 \
+--ntp-pool=0.ro.pool.ntp.org \
+--setup-dns
+
