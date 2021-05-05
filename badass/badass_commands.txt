@@ -1,5 +1,18 @@
 Exclude all binary files:
 file * | grep -v ELF | grep -v executable | awk '{print $1}' | sed -e 's/://g' | xargs ls -l
+
 or
+
 grep -r -I -l .
+
+or
+
 file * | egrep -v 'ELF|executable' | awk '{print $1}' | sed -e 's/://g' | xargs ls -l
+
+or
+
+find . ! -perm -111
+
+or
+
+find . -maxdepth 1 ! -perm -111
