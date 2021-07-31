@@ -1,1 +1,10 @@
 Splunk Queries
+
+host
+source
+sourcetype
+status
+
+
+table 
+stats count by
